@@ -11,7 +11,8 @@
     <PackageReference Include="Microsoft.AspNetCore.Mvc.Testing" Version="$(MicrosoftAspNetCoreMvcTestingVersion)" />
     <PackageReference Include="Microsoft.Identity.Lab.Api" Version="$(MicrosoftIdentityLabApiVersion)" />
     <PackageReference Include="Microsoft.NET.Test.Sdk" Version="$(MicrosoftNetTestSdkVersion)" />
-    <PackageReference Include="Microsoft.Playwright" Version="$(MicrosoftPlaywrightVersion)" />
+    <PackageReference Include="Selenium.WebDriver" Version="$(SeleniumWebDriverVersion)" />
+    <PackageReference Include="Selenium.WebDriver.ChromeDriver" Version="$(SeleniumWebDriverChromeDriverVersion)" />
     <PackageReference Include="xunit" Version="$(XunitVersion)" />
     <PackageReference Include="xunit.runner.visualstudio" Version="$(XunitRunnerVisualStudioVersion)">
       <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
@@ -24,8 +25,8 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\..\DevApps\WebAppCallsMicrosoftGraph\WebAppCallsMicrosoftGraph.csproj" />
     <ProjectReference Include="..\..\Microsoft.Identity.Web.Test.Common\Microsoft.Identity.Web.Test.Common.csproj" />
+    <ProjectReference Include="..\..\Microsoft.Identity.Web.Test\Microsoft.Identity.Web.Test.csproj" />
   </ItemGroup>
 
 </Project>

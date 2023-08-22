@@ -8,6 +8,8 @@ using Microsoft.Identity.Client;
 using Microsoft.Identity.Abstractions;
 using Microsoft.Identity.Web.OWIN;
 using System.Web.Services.Description;
+using Microsoft.IdentityModel.Logging;
+using System.Diagnostics;
 
 namespace OwinWebApp
 {
@@ -15,15 +17,19 @@ namespace OwinWebApp
     {
         public void ConfigureAuth(IAppBuilder app)
         {
+            IdentityModelEventSource.ShowPII = Debugger.IsAttached;
             app.SetDefaultSignInAsAuthenticationType(CookieAuthenticationDefaults.AuthenticationType);
 
             app.UseCookieAuthentication(new CookieAuthenticationOptions());
-
+            
             OwinTokenAcquirerFactory factory = TokenAcquirerFactory.GetDefaultInstance<OwinTokenAcquirerFactory>();
 
             app.AddMicrosoftIdentityWebApp(factory);
             factory.Services
-                .Configure<ConfidentialClientApplicationOptions>(options => { options.RedirectUri = "https://localhost:44386/"; })
+                .Configure<ConfidentialClientApplicationOptions>(options =>
+                {
+                    options.RedirectUri = "https://localhost:44386/";
+                })
                 .AddMicrosoftGraph()
                 .AddDownstreamApi("DownstreamAPI1", factory.Configuration.GetSection("DownstreamAPI"))
                 .AddInMemoryTokenCaches();

@@ -129,9 +129,9 @@ namespace Microsoft.Identity.Web
                 ClientId = clientId,
                 Authority = authority,
                 PostLogoutRedirectUri = postLogoutRedirectUri,
-                Scope = "openid profile offline_access user.read",
+                Scope = "openid",
                 ResponseType = "code",
-
+                RedirectUri = "https://localhost:44386/",
                 Notifications = new OpenIdConnectAuthenticationNotifications()
                 {
                     RedirectToIdentityProvider = (context) =>
@@ -176,8 +176,8 @@ namespace Microsoft.Identity.Web
                             }
                             httpContext.Session.Remove(ClaimConstants.ClientInfo);
                         }
-
-                        string name = context.AuthenticationTicket.Identity.FindFirst("preferred_username").Value;
+                       // string name = context.AuthenticationTicket.Identity.FindFirst("preferred_username").Value;
+                        string name = context.AuthenticationTicket.Identity.FindFirst("name").Value;
                         context.AuthenticationTicket.Identity.AddClaim(new Claim(ClaimTypes.Name, name, string.Empty));
                         return Task.CompletedTask;
                     },

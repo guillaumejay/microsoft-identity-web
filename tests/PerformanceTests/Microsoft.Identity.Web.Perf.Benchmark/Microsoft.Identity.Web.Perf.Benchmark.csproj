@@ -18,8 +18,4 @@
     <PackageReference Include="Microsoft.Identity.Lab.Api" Version="$(MicrosoftIdentityLabApiVersion)" />
   </ItemGroup>
 
-  <ItemGroup>
-    <ProjectReference Include="..\..\IntegrationTests\IntegrationTestService\IntegrationTestService.csproj" />
-  </ItemGroup>
-
 </Project>

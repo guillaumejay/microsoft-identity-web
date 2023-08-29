@@ -49,15 +49,7 @@ namespace OwinWebApp.Controllers
                 var response = await client.GetAsync(url);
                 Debug.Assert(response.IsSuccessStatusCode);
                 Debugger.Break();
-                /*       HttpResponseMessage response = await client.GetAsync("https://graph.microsoft.com/v1.0/me");
-                       */
-                // OR - Get a token if an SDK needs it (uses MSAL.NET)
-                //ITokenAcquirerFactory tokenAcquirerFactory = TokenAcquirerFactory.GetDefaultInstance();
-                //ITokenAcquirer acquirer = tokenAcquirerFactory.GetTokenAcquirer();
-                //AcquireTokenResult tokenResult = await acquirer.GetTokenForUserAsync(
-                //   new[] { "user.read" });
-                //string accessToken = tokenResult.AccessToken;
-                //// return the item
+              
                 string owner = (HttpContext.User as ClaimsPrincipal).GetDisplayName();
                 ViewBag.Title = owner;
                 return View();

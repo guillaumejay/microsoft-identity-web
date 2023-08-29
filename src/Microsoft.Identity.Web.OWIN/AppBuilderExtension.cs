@@ -129,9 +129,8 @@ namespace Microsoft.Identity.Web
                 ClientId = clientId,
                 Authority = authority,
                 PostLogoutRedirectUri = postLogoutRedirectUri,
-                Scope = "openid",
+                Scope = "openid profile offline_access user.read",
                 ResponseType = "code",
-                RedirectUri = "https://localhost:44386/",
                 Notifications = new OpenIdConnectAuthenticationNotifications()
                 {
                     RedirectToIdentityProvider = (context) =>
